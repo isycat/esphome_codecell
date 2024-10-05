@@ -4,18 +4,18 @@ from esphome.components import sensor
 from esphome.const import CONF_ID, UNIT_EMPTY, ICON_EMPTY, UNIT_LUX, ICON_BRIGHTNESS_5
 
 microbots_codecell_ns = cg.esphome_ns.namespace('microbots_codecell')
-MyCodeCell = microbots_codecell_ns.class_('MyCodeCell', sensor.Sensor, cg.PollingComponent)
+CodeCellSensor = microbots_codecell_ns.class_('CodeCellSensor', sensor.Sensor, cg.PollingComponent)
 
 CONFIG_SCHEMA = (
     sensor.sensor_schema(
-        MyCodeCell,
+        CodeCellSensor,
         # unit_of_measurement=UNIT_LUX,
         # accuracy_decimals=1,
         device_class=DEVICE_CLASS_ILLUMINANCE,
         state_class=STATE_CLASS_MEASUREMENT,
     )
     .extend({
-        cv.GenerateID(): cv.declare_id(MyCodeCell)
+        cv.GenerateID(): cv.declare_id(CodeCellSensor)
     }).extend(cv.polling_component_schema('10s'))
 )
 
