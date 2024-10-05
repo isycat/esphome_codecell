@@ -4,6 +4,7 @@
 CodeCell singleCodeCell;
 
 using namespace esphome;
+using namespace microbots_codecell;
 
 class MyCodeCell : public PollingComponent, public Sensor {
 
