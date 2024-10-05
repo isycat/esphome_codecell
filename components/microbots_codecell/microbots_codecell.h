@@ -3,8 +3,8 @@
 
 CodeCell singleCodeCell;
 
-using namespace esphome;
-using namespace microbots_codecell;
+namespace esphome {
+namespace microbots_codecell {
 
 class MyCodeCell : public PollingComponent, public Sensor {
 
@@ -24,3 +24,6 @@ void update() override {
 }
 
 };
+
+} // ns microbots_codecell
+} // ns esphome
