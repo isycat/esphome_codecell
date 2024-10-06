@@ -7,6 +7,9 @@
 #include <Wire.h>
 
 
+#include <CodeCell.h>
+CodeCell singleCodeCell;
+
 Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
 
 namespace esphome {
