@@ -2,23 +2,37 @@
 
 #include <Adafruit_VCNL4040.h>
 #include "esphome.h"
+#include "esphome/core/component.h"
+#include "esphome/components/sensor/sensor.h"
 #include <Wire.h>
 
 
 namespace esphome {
 namespace codecell {
 
-class CodeCellSensor : public PollingComponent, public Sensor {
+Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
+
+class CodeCellSensor : public PollingComponent, public sensor::Sensor {
 
 public:
 
 CodeCellSensor() : PollingComponent(1000) {}
 
-float get_setup_priority() const override;
+float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
-void setup() override;
+void setup() override {
+    if (!vcnl4040.begin()) {
+        while (1);
+    }
+}
 
-void update() override;
+void update() override {
+    int raw = vcnl4040.getWhiteLight();
+    this->publish_state(raw);
+}
+
+
+
 
 };
 
