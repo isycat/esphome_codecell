@@ -1,7 +1,8 @@
-#include <CodeCell.h>
+#include "Adafruit_VCNL4040.h"
 #include "esphome.h"
+#include "Wire.h"
 
-CodeCell singleCodeCell;
+Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
 
 namespace esphome {
 namespace codecell {
@@ -15,12 +16,14 @@ CodeCellSensor() : PollingComponent(1000) {}
 float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
 void setup() override {
-    singleCodeCell.Init(LIGHT);
+    if (!vcnl4040.begin()) {
+        while (1);
+    }
 }
 
 void update() override {
-    uint16_t brightness = (CodeCellSensor.Light_WhiteRead()) >> 3; 
-    this->publish_state(brightness);
+    int raw = vcnl4040.getWhiteLight();
+    this->publish_state(raw);
 }
 
 };
