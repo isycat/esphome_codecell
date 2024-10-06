@@ -1,6 +1,8 @@
-#include "Adafruit_VCNL4040.h"
+#pragma once
+
+#include <Adafruit_VCNL4040.h>
 #include "esphome.h"
-#include "Wire.h"
+#include <Wire.h">
 
 Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
 
