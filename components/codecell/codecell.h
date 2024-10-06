@@ -7,10 +7,10 @@
 #include <Wire.h>
 
 
+Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
+
 namespace esphome {
 namespace codecell {
-
-Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
 
 class CodeCellSensor : public PollingComponent, public sensor::Sensor {
 
