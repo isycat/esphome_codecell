@@ -2,7 +2,7 @@
 
 #include <Adafruit_VCNL4040.h>
 #include "esphome.h"
-#include <Wire.h">
+#include <Wire.h>
 
 
 namespace esphome {
